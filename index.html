@@ -12,6 +12,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@700&display=swap">
 <link rel="stylesheet" href="style.css">
+<script>
+  // TikTok sign-in for the channel's own publishing tool: TikTok returns here with a one-time code, which belongs to the
+  // tool running on the owner's computer, so hand it straight over. Only our tool's sign-ins (state "wkyf-...") are forwarded.
+  (function () {
+    var q = new URLSearchParams(location.search), st = q.get('state') || '';
+    if (st.indexOf('wkyf-') === 0 && (q.get('code') || q.get('error'))) location.replace('http://127.0.0.1:8765/tiktok/callback' + location.search);
+  })();
+</script>
 </head>
 <body>
 <header class="top"><div class="wrap">
